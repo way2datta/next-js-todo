@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTodoItems, createTodoItem } from "./http-clients/TodoItemRepository";
+import { fetchTodoItems, createTodoItem, updateTodoItem } from "./http-clients/TodoItemRepository";
 
 function App() {
   const [newTodo, setNewTodo] = useState('');
@@ -17,6 +17,15 @@ function App() {
   const onNewTextChange = ({ target }) => {
     setNewTodo(target.value);
   }
+
+  const onToggleTodoItem = async (description) => {
+    const objIndex = todos.findIndex(x => x.description == description);
+    const updatableTodo = todos[objIndex];
+    updatableTodo.isComplete = !updatableTodo.isComplete;
+    await updateTodoItem(updatableTodo);
+    const updatedTodos = [...todos];
+    setTodos(updatedTodos);
+  };
 
   const handleKeyDown = async (e) => {
     if (e.key === 'Enter') {
@@ -39,7 +48,7 @@ function App() {
       <h3 className="sub-heading">Existing items:</h3>
       <ul>
         {todos.map(item => {
-          return <li key={item.description}>
+          return <li key={item.description} onClick={(e) => onToggleTodoItem(item.description)}>
             {item.description} <span className="tag">{item.isComplete ? "Done" : "Not done"}</span>
           </li>
         })}

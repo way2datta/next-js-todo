@@ -13,6 +13,13 @@ export default async (req, res) => {
       items.push(newTodoItem);
       res.end(JSON.stringify(items));
       break;
+    case 'PUT':
+      const updatableTodoItem = req.body;
+      const objIndex = items.findIndex(x => x.description == updatableTodoItem.description);
+      const updatableTodo = items[objIndex];
+      updatableTodo.isComplete = !updatableTodo.isComplete;
+      res.end(JSON.stringify(items));
+      break;
     default:
       res.setHeader('Allow', ['GET', 'POST'])
       res.status(405).end(`Method ${method} Not Allowed`)
