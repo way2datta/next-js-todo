@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTodoItems, createTodoItem, updateTodoItem } from './http-clients/TodoItemRepository';
+import { fetchTodoItems, createTodoItem, updateTodoItem } from '../http-clients/TodoItemRepository';
 
 function App() {
   const [newTodo, setNewTodo] = useState('');
