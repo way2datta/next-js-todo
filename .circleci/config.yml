@@ -8,6 +8,7 @@ jobs:
     working_directory: /tmp/src
     steps:
       - checkout
+      - run: npm install
       - run: npm ci
       - run: npx build
       - run: npm run lint
