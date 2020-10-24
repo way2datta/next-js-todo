@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run: npm install
       - run: npm ci
-      - run: npx build
+      - run: npm run build
       - run: npm run lint
 workflows:
   node-linters:
