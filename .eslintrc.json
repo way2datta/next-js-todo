@@ -18,5 +18,10 @@
         "react"
     ],
     "rules": {
+        "react/jsx-file": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off"
     }
 }

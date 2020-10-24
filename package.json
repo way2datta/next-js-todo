@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint":".\\node_modules\\.bin\\eslint . "
+    "lint":".\\node_modules\\.bin\\eslint . ",
+    "fix-lint":".\\node_modules\\.bin\\eslint . --fix "
   },
   "dependencies": {
     "axios": "^0.21.0",

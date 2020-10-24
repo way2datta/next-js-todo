@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export async function fetchTodoItems() {
   const todoItemsResponse = await axios.get('/api/todo-items');
@@ -10,7 +10,7 @@ export async function createTodoItem(description) {
   return todoItemsResponse.data;
 }
 
-export async function updateTodoItem({description, isComplete}) {
+export async function updateTodoItem({ description, isComplete }) {
   const todoItemsResponse = await axios.put('/api/todo-items', { description, isComplete });
   return todoItemsResponse.data;
 }
