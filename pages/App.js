@@ -1,17 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { fetchTodoItems, createTodoItem } from "./http-clients/TodoItemRepository";
 
 function App() {
   const [newTodo, setNewTodo] = useState('');
-  const [todos, appendTodos] = useState([]);
+  const [todos, setTodos] = useState([]);
+
+  async function loadBuckets() {
+    const todoItems = await fetchTodoItems();
+    setTodos(todoItems);
+  }
+
+  useEffect(() => {
+    loadBuckets();
+  }, []);
 
   const onNewTextChange = ({ target }) => {
     setNewTodo(target.value);
   }
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = async (e) => {
     if (e.key === 'Enter') {
-      const newTodos = [...todos, newTodo]
-      appendTodos(newTodos);
+      const newTodos = [...todos, { description: newTodo, isComplete: false }];
+      await createTodoItem(newTodo);
+      setTodos(newTodos);
       setNewTodo('');
     }
   }
@@ -24,8 +35,8 @@ function App() {
         value={newTodo}
         onChange={onNewTextChange} />
     <ul>
-      {todos.map(value=>{
-        return <li key={value}>{value}</li>
+      {todos.map(item=>{
+        return <li key={item.description}>{item.description}</li>
       })}
     </ul>
     
