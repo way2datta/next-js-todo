@@ -8,7 +8,7 @@ export default async (req, res) => {
     case 'GET':
       res.end(JSON.stringify(items))
       break;
-   case 'POST':
+    case 'POST':
       const newTodoItem = req.body;
       items.push(newTodoItem);
       res.end(JSON.stringify(items));

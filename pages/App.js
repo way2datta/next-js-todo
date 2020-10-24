@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { fetchTodoItems, createTodoItem } from "./http-clients/TodoItemRepository";
 
 function App() {
@@ -28,20 +28,23 @@ function App() {
   }
   return (
     <div className="App">
-      <h1>TODO Tasks:</h1>
+      <h1>TODO Application</h1>
       <input type="text"
         placeholder="What's need to be done?"
         onKeyDown={handleKeyDown}
         value={newTodo}
-        onChange={onNewTextChange} />
-    <ul>
-      {todos.map(item=>{
-        return <li key={item.description}>{item.description}</li>
-      })}
-    </ul>
-    
+        onChange={onNewTextChange}
+        className="newTodoText"
+      />
+      <h3 className="sub-heading">Existing items:</h3>
+      <ul>
+        {todos.map(item => {
+          return <li key={item.description}>
+            {item.description} <span className="tag">{item.isComplete ? "Done" : "Not done"}</span>
+          </li>
+        })}
+      </ul>
     </div>
-
   );
 }
 

@@ -2,5 +2,43 @@ body{
   font-family: Verdana,sans-serif;
   font-size: 15px;
   line-height: 1.5;
+  margin: 10px;
 }
  
+.newTodoText{
+  // width: 300px;  
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+} 
+.sub-heading{
+  margin-top: 30px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+ 
+li {
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+ 
+li:last-child {
+  border: none;
+}
+
+.tag{
+background-color: gray;
+color: #fff;
+padding: 5px 10px;
+}
